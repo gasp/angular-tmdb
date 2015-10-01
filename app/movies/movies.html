@@ -1,0 +1,16 @@
+<div class="container-fluid">
+    <div class="row movies-list">
+        <a class="movies-list__link movie-backdrop"
+            ng-repeat="movie in movies | filter:{ title: search.title }"
+            style="background-image: url({{ movie.backdrop_path | tmdbImgUrl:true }})"
+            ui-sref="movie({ movieId: movie.id })">
+            <span class="movie-overlay">
+                <span class="movies-list__item">
+                    <span class="container">
+                      <span class="movie__title m-l-lg">{{ movie.title }}</span>
+                   </span>
+                </span>
+            </span>
+        </a>
+    </div>
+</div>

@@ -1,0 +1,7 @@
+<nav class="navbar">
+    <a class="navbar-brand" ui-sref="movies">Angular TMDb</a>
+
+    <form class="form-inline navbar-form pull-right" ng-show="'movies' | isState">
+        <input class="form-control" type="text" placeholder="Search movies..." ng-model="searchForm.title">
+    </form>
+</nav>

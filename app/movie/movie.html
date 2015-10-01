@@ -1,0 +1,16 @@
+<div class="movie-backdrop" style="background-image: url({{ movie.backdrop_path | tmdbImgUrl:true }})">
+    <div class="movie-overlay">
+        <div class="container">
+            <div class="row movie">
+                <div class="media">
+                    <img class="media__image" ng-src="{{ movie.poster_path | tmdbImgUrl }}">
+
+                    <div class="media__body">
+                        <h1 class="movie__title">{{ movie.title }}</h1>
+                        <p class="movie__description">{{ movie.overview }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
