@@ -18,7 +18,7 @@ Navigate to the newly `http://localhost:8080` Angular TMDb App.
 
 ## Author
 
-[joulse](http://joulse.com)
+[Joulse](http://joulse.com)
 
 ## License
 
