@@ -21,10 +21,6 @@ var copiedFiles = [
     app + '/pattern.png'
 ];
 
-var imageFiles = [
-    app + '/img/**/*.{png,jpg}'
-];
-
 var angularTemplates = [
     app + '/**/*.html',
     '!' + app + '/{index,404}.html'
@@ -53,7 +49,8 @@ gulp.task('sass', [], function () {
         .pipe(gulp.dest(dist + '/css'))
         .pipe(rename({ suffix: '.min' }))
         .pipe(minifycss())
-        .pipe(gulp.dest(dist + '/css'));
+        .pipe(gulp.dest(dist + '/css'))
+        .pipe(connect.reload());
 });
 
 gulp.task('angular', [ 'angular-scripts', 'angular-templates' ]);
@@ -90,7 +87,13 @@ gulp.task('clean', [], function () {
     return gulp.src(dist, { read: false }).pipe(clean({ force: true }));
 });
 
-gulp.task('connect', function() {
+gulp.task('watch', function () {
+  gulp.watch([app + '/**.html'], ['copy-files', 'angular-templates']);
+  gulp.watch([app + '/**.js'], ['angular-scripts', 'copy-js-files']);
+  gulp.watch(sassFiles, ['sass']);
+});
+
+gulp.task('connect', ['watch'], function() {
     connect.server({
         root: 'dist',
         livereload: true
